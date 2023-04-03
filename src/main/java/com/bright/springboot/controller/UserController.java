@@ -8,7 +8,6 @@ package com.bright.springboot.controller;
 
 
 import com.bright.springboot.dto.UserDto;
-import com.bright.springboot.entity.User;
 import com.bright.springboot.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -58,4 +57,16 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseEntity.ok("User successfully deleted!!!");
     }
+
+
+    /*@ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorDetails> handleResourceNotFoundException(ResourceNotFoundException notFoundException, WebRequest webRequest){
+        ErrorDetails errorDetails = new ErrorDetails(
+                LocalDateTime.now(),
+                notFoundException.getMessage(),
+                webRequest.getDescription(false),
+                "USER_NOT_FOUND"
+        );
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    }*/
 }
