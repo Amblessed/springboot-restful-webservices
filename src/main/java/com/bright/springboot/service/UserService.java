@@ -7,6 +7,7 @@ package com.bright.springboot.service;
  */
 
 
+import com.bright.springboot.dto.UserDto;
 import com.bright.springboot.entity.User;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public interface UserService {
 
-    User createUser(User user);
+    UserDto createUser(UserDto userDto);
 
     User getUserById(Long userId);
     List<User> getAllUsers();

@@ -7,6 +7,7 @@ package com.bright.springboot.controller;
  */
 
 
+import com.bright.springboot.dto.UserDto;
 import com.bright.springboot.entity.User;
 import com.bright.springboot.service.UserService;
 import lombok.AllArgsConstructor;
@@ -25,8 +26,8 @@ public class UserController {
 
     //build create User REST API
     @PostMapping("/create")
-    public ResponseEntity<User> createUser(@RequestBody User user){
-        User savedUser = userService.createUser(user);
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
+        UserDto savedUser = userService.createUser(userDto);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 

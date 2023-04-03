@@ -7,6 +7,7 @@ package com.bright.springboot.service.impl;
  */
 
 
+import com.bright.springboot.dto.UserDto;
 import com.bright.springboot.entity.User;
 import com.bright.springboot.repository.UserRepository;
 import com.bright.springboot.service.UserService;
@@ -23,8 +24,15 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public User createUser(User user) {
-        return userRepository.save(user);
+    public UserDto createUser(UserDto userDto) {
+        //Convert UserDto into User JPA Entity
+        User user = new User(userDto.getId(), userDto.getFirstName(), userDto.getLastName(), userDto.getEmail());
+
+        User savedUser = userRepository.save(user);
+
+        //Convert User JPA entity to UserDto
+        return new UserDto(savedUser.getId(), savedUser.getFirstName(),
+                savedUser.getLastName(), savedUser.getEmail());
     }
 
     @Override

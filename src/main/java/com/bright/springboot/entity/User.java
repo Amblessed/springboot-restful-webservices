@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @Entity
 @Table(name = "tbl_user")
 @NoArgsConstructor
@@ -45,4 +44,11 @@ public class User {
     @UpdateTimestamp
     @Column(insertable = false)
     private LocalDateTime lastUpdated;
+
+    public User(Long id, String firstName, String lastName, String email) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 }
