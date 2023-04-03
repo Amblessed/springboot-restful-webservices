@@ -33,23 +33,23 @@ public class UserController {
 
     //build get User REST API
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") Long id){
-        User user = userService.getUserById(id);
-        return ResponseEntity.ok(user);
+    public ResponseEntity<UserDto> getUserById(@PathVariable("id") Long id){
+        UserDto userDto = userService.getUserById(id);
+        return ResponseEntity.ok(userDto);
     }
 
     //build get All Users REST API
     @GetMapping("/all")
-    public ResponseEntity<List<User>> getUsers(){
-        List<User> users = userService.getAllUsers();
+    public ResponseEntity<List<UserDto>> getUsers(){
+        List<UserDto> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
     }
 
     //build update user REST API
     @PutMapping("/{id}/update")
-    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable("id") Long id){
-        User updatedUser = userService.updateUser(user, id);
-        return ResponseEntity.ok(updatedUser);
+    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto, @PathVariable("id") Long id){
+        UserDto updatedUserDto = userService.updateUser(userDto, id);
+        return ResponseEntity.ok(updatedUserDto);
     }
 
     //build update user REST API
