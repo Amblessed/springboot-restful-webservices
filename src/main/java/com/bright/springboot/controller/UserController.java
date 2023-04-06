@@ -9,6 +9,7 @@ package com.bright.springboot.controller;
 
 import com.bright.springboot.dto.UserDto;
 import com.bright.springboot.service.UserService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class UserController {
 
     //build create User REST API
     @PostMapping("/create")
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
+    public ResponseEntity<UserDto> createUser(@RequestBody @Valid UserDto userDto){
         UserDto savedUser = userService.createUser(userDto);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
@@ -46,7 +47,7 @@ public class UserController {
 
     //build update user REST API
     @PutMapping("/{id}/update")
-    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto, @PathVariable("id") Long id){
+    public ResponseEntity<UserDto> updateUser(@RequestBody @Valid UserDto userDto, @PathVariable("id") Long id){
         UserDto updatedUserDto = userService.updateUser(userDto, id);
         return ResponseEntity.ok(updatedUserDto);
     }
